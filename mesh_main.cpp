@@ -154,11 +154,12 @@ template <tIdxType V, typename T> // list for every V type (tIdxType) to it's T 
 struct Topo {
     vector<tInt> IA;
     vector<T> JA;
-    char * name;
+    char * name ;
 
     void clear() {
         IA.clear();
         JA.clear();
+        name = nullptr;
     }
 
    /* Topo(string name_in) {
@@ -196,7 +197,8 @@ struct Topo {
     }
 
     size_t GetOccupiedMemory() {
-        return IA.capacity() * sizeof(tInt) + JA.capacity() * sizeof(T) + strlen(name)*sizeof(char);
+
+        return IA.capacity() * sizeof(tInt) + JA.capacity() * sizeof(T) + ((name)?(size_t)strlen(name):size_t(0));
     }
 };
 
